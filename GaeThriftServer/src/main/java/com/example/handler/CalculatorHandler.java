@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "CalculatorHandler", urlPatterns = "/calculator")
 public class CalculatorHandler extends TServlet {
-
     public CalculatorHandler() {
         super(new CalculatorService.Processor<>(new CalculatorServiceImpl()), new TBinaryProtocol.Factory());
     }
