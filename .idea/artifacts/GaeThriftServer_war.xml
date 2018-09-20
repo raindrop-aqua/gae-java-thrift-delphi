@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="GaeThriftServer:war">
+    <output-path>$PROJECT_DIR$/GaeThriftServer/target</output-path>
+    <root id="archive" name="GaeThriftServer-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="GaeThriftServer:war exploded" />
+    </root>
+  </artifact>
+</component>
