@@ -3,11 +3,23 @@ unit MainForm;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.Controls.Presentation, Thrift, Thrift.Transport,
+  Thrift.Protocol,
+  ThriftInterface.Calculator;
 
 type
   TfrmMain = class(TForm)
+    Button1: TButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    procedure Button1Click(Sender: TObject);
   private
     { private êÈåæ }
   public
@@ -20,5 +32,32 @@ var
 implementation
 
 {$R *.fmx}
+
+procedure TfrmMain.Button1Click(Sender: TObject);
+var
+  Transport: ITransport;
+  Protocol: IProtocol;
+  client: TCalculatorService.Iface;
+  p1, p2, answer: integer;
+begin
+  try
+    Transport := THTTPClientImpl.Create('https://example.com/calculator');
+    Protocol := TBinaryProtocolImpl.Create(Transport);
+    client := TCalculatorService.TClient.Create(Protocol);
+
+    p1 := StrToInt(Edit1.Text);
+    p2 := StrToInt(Edit2.Text);
+
+    Transport.Open;
+    answer := client.add(p1, p2);
+    Transport.Close;
+
+    Edit3.Text := IntToStr(answer);
+
+  except
+    on e: Exception do
+      WriteLn(e.ClassName + ': ' + e.Message);
+  end;
+end;
 
 end.
