@@ -319,6 +319,25 @@
             <Form>frmMain</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="ThriftInterface\ThriftInterface.Calculator.pas"/>
+        <DCCReference Include="ThriftInterface\ThriftInterface.Common.pas"/>
+        <DCCReference Include="ThriftInterface\ThriftInterface.Todo.pas"/>
+        <DCCReference Include="Thrift\Thrift.Collections.pas"/>
+        <DCCReference Include="Thrift\Thrift.Exception.pas"/>
+        <DCCReference Include="Thrift\Thrift.pas"/>
+        <DCCReference Include="Thrift\Thrift.Processor.Multiplex.pas"/>
+        <DCCReference Include="Thrift\Thrift.Protocol.Compact.pas"/>
+        <DCCReference Include="Thrift\Thrift.Protocol.JSON.pas"/>
+        <DCCReference Include="Thrift\Thrift.Protocol.Multiplex.pas"/>
+        <DCCReference Include="Thrift\Thrift.Protocol.pas"/>
+        <DCCReference Include="Thrift\Thrift.Serializer.pas"/>
+        <DCCReference Include="Thrift\Thrift.Server.pas"/>
+        <DCCReference Include="Thrift\Thrift.Socket.pas"/>
+        <DCCReference Include="Thrift\Thrift.Stream.pas"/>
+        <DCCReference Include="Thrift\Thrift.Transport.pas"/>
+        <DCCReference Include="Thrift\Thrift.Transport.Pipes.pas"/>
+        <DCCReference Include="Thrift\Thrift.TypeRegistry.pas"/>
+        <DCCReference Include="Thrift\Thrift.Utils.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
