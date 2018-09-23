@@ -37,22 +37,22 @@ procedure TfrmMain.Button1Click(Sender: TObject);
 var
   Transport: ITransport;
   Protocol: IProtocol;
-  client: TCalculatorService.Iface;
-  p1, p2, answer: integer;
+  Client: TCalculatorService.Iface;
+  P1, P2, Answer: integer;
 begin
   try
-    Transport := THTTPClientImpl.Create('https://example.com/calculator');
+    Transport := THTTPClientImpl.Create('http://localhost:8080/calculator');
     Protocol := TBinaryProtocolImpl.Create(Transport);
-    client := TCalculatorService.TClient.Create(Protocol);
+    Client := TCalculatorService.TClient.Create(Protocol);
 
-    p1 := StrToInt(Edit1.Text);
-    p2 := StrToInt(Edit2.Text);
+    P1 := StrToInt(Edit1.Text);
+    P2 := StrToInt(Edit2.Text);
 
     Transport.Open;
-    answer := client.add(p1, p2);
+    Answer := Client.add(P1, P2);
     Transport.Close;
 
-    Edit3.Text := IntToStr(answer);
+    Edit3.Text := IntToStr(Answer);
 
   except
     on e: Exception do
