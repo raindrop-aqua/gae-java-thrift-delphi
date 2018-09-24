@@ -4,7 +4,7 @@ namespace delphi ThriftInterface.Todo
 include "common.thrift"
 
 /** TodoのID */
-typedef i32 todoId
+typedef string todoId
 
 /** Todo */
 struct TTodo {

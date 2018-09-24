@@ -29,7 +29,7 @@ const
 type
   ITTodo = interface;
 
-  TtodoId = Integer;
+  TtodoId = string;
 
   ITTodo = interface(IBase)
     function GetId: TtodoId;
@@ -493,8 +493,8 @@ begin
       end;
       case field_.ID of
         1: begin
-          if (field_.Type_ = TType.I32) then begin
-            Self.Id := iprot.ReadI32();
+          if (field_.Type_ = TType.String_) then begin
+            Self.Id := iprot.ReadString();
           end else begin
             TProtocolUtil.Skip(iprot, field_.Type_);
           end;
@@ -536,10 +536,10 @@ begin
   Thrift.Protocol.Init( field_);
   if (__isset_Id) then begin
     field_.Name := 'id';
-    field_.Type_  := TType.I32;
+    field_.Type_  := TType.String_;
     field_.ID := 1;
     oprot.WriteFieldBegin(field_);
-    oprot.WriteI32(Self.Id);
+    oprot.WriteString(Self.Id);
     oprot.WriteFieldEnd();
   end;
   if (__isset_Checked) then begin
@@ -710,7 +710,7 @@ begin
   _args12 := TToggle_argsImpl.Create();
   _args12.Id := id;
   _args12.Write(oprot_);
-  _args12.Id := 0;
+  _args12.Id := '';
   oprot_.WriteMessageEnd();
   oprot_.Transport.Flush();
 end;
@@ -756,7 +756,7 @@ begin
   _args17 := TRemove_argsImpl.Create();
   _args17.Id := id;
   _args17.Write(oprot_);
-  _args17.Id := 0;
+  _args17.Id := '';
   oprot_.WriteMessageEnd();
   oprot_.Transport.Flush();
 end;
@@ -925,7 +925,7 @@ begin
   ret := TToggle_resultImpl.Create;
   try
     iface_.toggle(args.Id);
-    args.Id := 0;
+    args.Id := '';
   except
     on E: TTInvalidParameterException do begin
       ret.Error := E.TInvalidParameterExceptionFactory;
@@ -965,7 +965,7 @@ begin
   ret := TRemove_resultImpl.Create;
   try
     iface_.remove(args.Id);
-    args.Id := 0;
+    args.Id := '';
   except
     on E: TTInvalidParameterException do begin
       ret.Error := E.TInvalidParameterExceptionFactory;
@@ -1387,8 +1387,8 @@ begin
       end;
       case field_.ID of
         1: begin
-          if (field_.Type_ = TType.I32) then begin
-            Self.Id := iprot.ReadI32();
+          if (field_.Type_ = TType.String_) then begin
+            Self.Id := iprot.ReadString();
           end else begin
             TProtocolUtil.Skip(iprot, field_.Type_);
           end;
@@ -1416,10 +1416,10 @@ begin
   Thrift.Protocol.Init( field_);
   if (__isset_Id) then begin
     field_.Name := 'id';
-    field_.Type_  := TType.I32;
+    field_.Type_  := TType.String_;
     field_.ID := 1;
     oprot.WriteFieldBegin(field_);
-    oprot.WriteI32(Self.Id);
+    oprot.WriteString(Self.Id);
     oprot.WriteFieldEnd();
   end;
   oprot.WriteFieldStop();
@@ -1600,8 +1600,8 @@ begin
       end;
       case field_.ID of
         1: begin
-          if (field_.Type_ = TType.I32) then begin
-            Self.Id := iprot.ReadI32();
+          if (field_.Type_ = TType.String_) then begin
+            Self.Id := iprot.ReadString();
           end else begin
             TProtocolUtil.Skip(iprot, field_.Type_);
           end;
@@ -1629,10 +1629,10 @@ begin
   Thrift.Protocol.Init( field_);
   if (__isset_Id) then begin
     field_.Name := 'id';
-    field_.Type_  := TType.I32;
+    field_.Type_  := TType.String_;
     field_.ID := 1;
     oprot.WriteFieldBegin(field_);
-    oprot.WriteI32(Self.Id);
+    oprot.WriteString(Self.Id);
     oprot.WriteFieldEnd();
   end;
   oprot.WriteFieldStop();
