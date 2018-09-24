@@ -20,12 +20,12 @@ public class TodoServiceImpl implements TodoService.Iface {
     }
 
     @Override
-    public void toggle(int id) throws TInvalidParameterException, TException {
+    public void toggle(String id) throws TInvalidParameterException, TException {
         TodoLogic.toggle(id);
     }
 
     @Override
-    public void remove(int id) throws TInvalidParameterException, TException {
+    public void remove(String id) throws TInvalidParameterException, TException {
         TodoLogic.remove(id);
     }
 }
