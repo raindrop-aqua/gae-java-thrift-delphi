@@ -338,6 +338,26 @@
         <DCCReference Include="Thrift\Thrift.Transport.Pipes.pas"/>
         <DCCReference Include="Thrift\Thrift.TypeRegistry.pas"/>
         <DCCReference Include="Thrift\Thrift.Utils.pas"/>
+        <DCCReference Include="SubForm\AddCalculatorForm.pas">
+            <Form>frmAddCalculator</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="SubForm\BlankForm.pas">
+            <Form>frmBlank</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="SubForm\CalculatorForm.pas">
+            <Form>frmCalculator</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="SubForm\TodoForm.pas">
+            <Form>frmTodo</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

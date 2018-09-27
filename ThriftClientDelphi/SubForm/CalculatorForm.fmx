@@ -1,0 +1,80 @@
+object frmCalculator: TfrmCalculator
+  Size.Width = 447.000000000000000000
+  Size.Height = 406.000000000000000000
+  Size.PlatformDefault = False
+  object Button1: TButton
+    Position.X = 40.000000000000000000
+    Position.Y = 176.000000000000000000
+    TabOrder = 3
+    Text = #36275#12375#31639
+    OnClick = Button1Click
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    Position.X = 136.000000000000000000
+    Position.Y = 48.000000000000000000
+  end
+  object Edit2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 5
+    Position.X = 136.000000000000000000
+    Position.Y = 88.000000000000000000
+  end
+  object Edit3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 6
+    TabStop = False
+    ReadOnly = True
+    Position.X = 136.000000000000000000
+    Position.Y = 128.000000000000000000
+  end
+  object Label1: TLabel
+    Position.X = 40.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 90.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #12497#12521#12513#12540#12479#65297
+    TabOrder = 7
+  end
+  object Label2: TLabel
+    Position.X = 40.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 90.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #12497#12521#12513#12540#12479#65298
+    TabOrder = 8
+  end
+  object Label3: TLabel
+    Position.X = 40.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 90.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #31572#12360
+    TabOrder = 9
+  end
+  object Button2: TButton
+    Position.X = 128.000000000000000000
+    Position.Y = 176.000000000000000000
+    TabOrder = 2
+    Text = #24341#12365#31639
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Position.X = 216.000000000000000000
+    Position.Y = 176.000000000000000000
+    TabOrder = 1
+    Text = #25499#12369#31639
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Position.X = 304.000000000000000000
+    Position.Y = 176.000000000000000000
+    TabOrder = 0
+    Text = #21106#12426#31639
+    OnClick = Button4Click
+  end
+end

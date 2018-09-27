@@ -1,0 +1,50 @@
+object frmTodo: TfrmTodo
+  Size.Width = 576.000000000000000000
+  Size.Height = 502.000000000000000000
+  Size.PlatformDefault = False
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 0
+    Position.X = 24.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object btnAdd: TButton
+    Position.X = 312.000000000000000000
+    Position.Y = 32.000000000000000000
+    TabOrder = 3
+    Text = 'Add'
+    OnClick = btnAddClick
+  end
+  object ListBox1: TListBox
+    Position.X = 24.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 457.000000000000000000
+    Size.Height = 201.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    ShowCheckboxes = True
+    Viewport.Width = 453.000000000000000000
+    Viewport.Height = 197.000000000000000000
+  end
+  object btnRemove: TButton
+    Position.X = 400.000000000000000000
+    Position.Y = 272.000000000000000000
+    TabOrder = 1
+    Text = 'Remove'
+    OnClick = btnRemoveClick
+  end
+  object btnRefresh: TButton
+    Position.X = 400.000000000000000000
+    Position.Y = 32.000000000000000000
+    TabOrder = 2
+    Text = 'Refresh'
+    OnClick = btnRefreshClick
+  end
+end

@@ -22,7 +22,11 @@ uses
   Thrift.Transport in 'Thrift\Thrift.Transport.pas',
   Thrift.Transport.Pipes in 'Thrift\Thrift.Transport.Pipes.pas',
   Thrift.TypeRegistry in 'Thrift\Thrift.TypeRegistry.pas',
-  Thrift.Utils in 'Thrift\Thrift.Utils.pas';
+  Thrift.Utils in 'Thrift\Thrift.Utils.pas',
+  AddCalculatorForm in 'SubForm\AddCalculatorForm.pas' {frmAddCalculator: TFrame},
+  BlankForm in 'SubForm\BlankForm.pas' {frmBlank: TFrame},
+  CalculatorForm in 'SubForm\CalculatorForm.pas' {frmCalculator: TFrame},
+  TodoForm in 'SubForm\TodoForm.pas' {frmTodo: TFrame};
 
 {$R *.res}
 

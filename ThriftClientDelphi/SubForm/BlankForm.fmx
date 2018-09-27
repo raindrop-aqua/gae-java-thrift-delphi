@@ -1,0 +1,5 @@
+object frmBlank: TfrmBlank
+  Size.Width = 559.000000000000000000
+  Size.Height = 556.000000000000000000
+  Size.PlatformDefault = False
+end

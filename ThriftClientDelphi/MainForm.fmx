@@ -2,62 +2,70 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 238
-  ClientWidth = 360
+  ClientHeight = 569
+  ClientWidth = 712
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
-  object Button1: TButton
-    Position.X = 40.000000000000000000
-    Position.Y = 176.000000000000000000
-    TabOrder = 0
-    Text = #36275#12375#31639
-    OnClick = Button1Click
-  end
-  object Edit1: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
+  object pnlSide: TPanel
+    Align = Left
+    Padding.Left = 5.000000000000000000
+    Padding.Top = 5.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 5.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 569.000000000000000000
+    Size.PlatformDefault = False
     TabOrder = 1
-    Position.X = 136.000000000000000000
-    Position.Y = 48.000000000000000000
+    object ListBox1: TListBox
+      Align = Client
+      Size.Width = 215.000000000000000000
+      Size.Height = 537.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      DisableFocusEffect = True
+      Items.Strings = (
+        'Add Calculator'
+        'Calculator'
+        'Todo')
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Viewport.Width = 215.000000000000000000
+      Viewport.Height = 537.000000000000000000
+    end
+    object Button1: TButton
+      Align = Bottom
+      Position.X = 5.000000000000000000
+      Position.Y = 542.000000000000000000
+      Size.Width = 215.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Start'
+      OnClick = Button1Click
+    end
   end
-  object Edit2: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 2
-    Position.X = 136.000000000000000000
-    Position.Y = 88.000000000000000000
-  end
-  object Edit3: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 3
-    Position.X = 136.000000000000000000
-    Position.Y = 128.000000000000000000
-  end
-  object Label1: TLabel
-    Position.X = 40.000000000000000000
-    Position.Y = 48.000000000000000000
-    Size.Width = 90.000000000000000000
-    Size.Height = 17.000000000000000000
+  object pnlMain: TPanel
+    Align = Client
+    Padding.Left = 5.000000000000000000
+    Padding.Top = 5.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 5.000000000000000000
+    Size.Width = 479.000000000000000000
+    Size.Height = 569.000000000000000000
     Size.PlatformDefault = False
-    Text = #12497#12521#12513#12540#12479#65297
-    TabOrder = 4
+    TabOrder = 0
   end
-  object Label2: TLabel
-    Position.X = 40.000000000000000000
-    Position.Y = 88.000000000000000000
-    Size.Width = 90.000000000000000000
-    Size.Height = 17.000000000000000000
+  object Splitter1: TSplitter
+    Align = Left
+    Cursor = crHSplit
+    MinSize = 20.000000000000000000
+    Position.X = 225.000000000000000000
+    ShowGrip = False
+    Size.Width = 8.000000000000000000
+    Size.Height = 569.000000000000000000
     Size.PlatformDefault = False
-    Text = #12497#12521#12513#12540#12479#65298
-    TabOrder = 5
-  end
-  object Label3: TLabel
-    Position.X = 40.000000000000000000
-    Position.Y = 128.000000000000000000
-    Size.Width = 90.000000000000000000
-    Size.Height = 17.000000000000000000
-    Size.PlatformDefault = False
-    Text = #31572#12360
-    TabOrder = 6
   end
 end
