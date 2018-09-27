@@ -1,9 +1,7 @@
 package com.example.logic;
 
 import com.example.thrift.TTodo;
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +14,24 @@ public class TodoLogic {
     public static List<TTodo> getTodoList() {
         log.info("getTodoList");
 
+        DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+
+        Query q = new Query("Todo");
+        PreparedQuery pq = ds.prepare(q);
+        List<Entity> result = pq.asList(FetchOptions.Builder.withDefaults());
+
         List<TTodo> list = new ArrayList<>();
-        TTodo todo  = new TTodo();
-        todo.setId("1");
-        todo.setDetail("first item");
-        todo.setChecked(false);
-        list.add(todo);
+        for (Entity e : result) {
+            TTodo todo = new TTodo();
+            todo.setId(KeyFactory.keyToString(e.getKey()));
+            todo.setDetail((String)e.getProperty("detail"));
+            todo.setChecked((boolean)e.getProperty("checked"));
+            list.add(todo);
+        }
         return list;
     }
 
-    public static void post(String detail) {
+    public static String post(String detail) {
         log.info("post:" + detail);
 
         DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -34,6 +40,8 @@ public class TodoLogic {
         todo.setProperty("detail", detail);
         todo.setProperty("checked", false);
         ds.put(todo);
+
+        return KeyFactory.keyToString(todo.getKey());
     }
 
     public static void toggle(String id) {

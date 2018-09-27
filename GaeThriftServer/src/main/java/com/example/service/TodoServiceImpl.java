@@ -15,8 +15,8 @@ public class TodoServiceImpl implements TodoService.Iface {
     }
 
     @Override
-    public void post(String detail) throws TException {
-        TodoLogic.post(detail);
+    public String post(String detail) throws TException {
+        return TodoLogic.post(detail);
     }
 
     @Override
