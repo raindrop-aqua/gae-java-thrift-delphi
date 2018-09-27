@@ -18,7 +18,7 @@ service TodoService {
     /** リストを取得する */
     list<TTodo> getTodoList(),
     /** Todoを投稿する */
-    void post(1: string detail),
+    string post(1: string detail),
     /** Todoのステータスを完了/未完了に変更する */
     void toggle(1: todoId id) throws (1: common.TInvalidParameterException error),
     /** Todoを削除する */

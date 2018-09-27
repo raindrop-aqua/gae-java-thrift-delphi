@@ -98,7 +98,7 @@ type
     type
       Iface = interface
         function getTodoList(): IThriftList<ITTodo>;
-        procedure post(const detail: string);
+        function post(const detail: string): string;
         procedure toggle(const id: TtodoId);
         procedure remove(const id: TtodoId);
       end;
@@ -117,14 +117,14 @@ type
       protected
         // Iface
         function getTodoList(): IThriftList<ITTodo>;
-        procedure post(const detail: string);
+        function post(const detail: string): string;
         procedure toggle(const id: TtodoId);
         procedure remove(const id: TtodoId);
       public
         procedure send_getTodoList();
         function recv_getTodoList(): IThriftList<ITTodo>;
         procedure send_post(const detail: string);
-        procedure recv_post();
+        function recv_post(): string;
         procedure send_toggle(const id: TtodoId);
         procedure recv_toggle();
         procedure send_remove(const id: TtodoId);
@@ -244,11 +244,26 @@ type
       end;
 
       IPost_result = interface(IBase)
+        function GetSuccess: string;
+        procedure SetSuccess( const Value: string);
+
+        property Success: string read GetSuccess write SetSuccess;
+
+        function Get__isset_Success: Boolean;
+
+        property __isset_Success: Boolean read Get__isset_Success;
       end;
 
       TPost_resultImpl = class(TInterfacedObject, IBase, IPost_result)
       private
+        FSuccess: string;
         
+        F__isset_Success: Boolean;
+        
+        function GetSuccess: string;
+        procedure SetSuccess( const Value: string);
+
+        function Get__isset_Success: Boolean;
       public
         constructor Create;
         destructor Destroy; override;
@@ -258,6 +273,12 @@ type
         // IBase
         procedure Read( const iprot: IProtocol);
         procedure Write( const oprot: IProtocol);
+
+        // Properties
+        property Success: string read GetSuccess write SetSuccess;
+
+        // isset
+        property __isset_Success: Boolean read Get__isset_Success;
       end;
 
       IToggle_args = interface(IBase)
@@ -653,10 +674,10 @@ begin
   raise TApplicationExceptionMissingResult.Create('getTodoList failed: unknown result');
 end;
 
-procedure TTodoService.TClient.post(const detail: string);
+function TTodoService.TClient.post(const detail: string): string;
 begin
   send_post(detail);
-  recv_post();
+  Result := recv_post();
 end;
 
 procedure TTodoService.TClient.send_post(const detail: string);
@@ -675,7 +696,7 @@ begin
   oprot_.Transport.Flush();
 end;
 
-procedure TTodoService.TClient.recv_post();
+function TTodoService.TClient.recv_post(): string;
 var
   _msg8 : Thrift.Protocol.TThriftMessage;
   _ax10 : TApplicationException;
@@ -691,6 +712,12 @@ begin
   _ret11 := TPost_resultImpl.Create();
   _ret11.Read(iprot_);
   iprot_.ReadMessageEnd();
+  if (_ret11.__isset_success) then
+  begin
+    Result := _ret11.Success;
+    Exit;
+  end;
+  raise TApplicationExceptionMissingResult.Create('post failed: unknown result');
 end;
 
 procedure TTodoService.TClient.toggle(const id: TtodoId);
@@ -887,7 +914,7 @@ begin
   iprot.ReadMessageEnd();
   ret := TPost_resultImpl.Create;
   try
-    iface_.post(args.Detail);
+    ret.Success := iface_.post(args.Detail);
     args.Detail := '';
   except
     on E: Exception do begin
@@ -1292,6 +1319,22 @@ begin
   inherited;
 end;
 
+function TTodoService.TPost_resultImpl.GetSuccess: string;
+begin
+  Result := FSuccess;
+end;
+
+procedure TTodoService.TPost_resultImpl.SetSuccess( const Value: string);
+begin
+  F__isset_Success := True;
+  FSuccess := Value;
+end;
+
+function TTodoService.TPost_resultImpl.Get__isset_Success: Boolean;
+begin
+  Result := F__isset_Success;
+end;
+
 procedure TTodoService.TPost_resultImpl.Read( const iprot: IProtocol);
 var
   field_ : TThriftField;
@@ -1309,7 +1352,18 @@ begin
       begin
         Break;
       end;
-      TProtocolUtil.Skip(iprot, field_.Type_);
+      case field_.ID of
+        0: begin
+          if (field_.Type_ = TType.String_) then begin
+            Self.Success := iprot.ReadString();
+          end else begin
+            TProtocolUtil.Skip(iprot, field_.Type_);
+          end;
+        end
+        else begin
+          TProtocolUtil.Skip(iprot, field_.Type_);
+        end;
+      end;
       iprot.ReadFieldEnd;
     end;
   finally
@@ -1320,11 +1374,21 @@ end;
 procedure TTodoService.TPost_resultImpl.Write( const oprot: IProtocol);
 var
   struc : TThriftStruct;
+  field_ : TThriftField;
   tracker : IProtocolRecursionTracker;
 begin
   tracker := oprot.NextRecursionLevel;
   Thrift.Protocol.Init( struc, 'post_result');
   oprot.WriteStructBegin(struc);
+  Thrift.Protocol.Init( field_);
+  if (__isset_Success) then begin
+    field_.Name := 'Success';
+    field_.Type_  := TType.String_;
+    field_.ID := 0;
+    oprot.WriteFieldBegin(field_);
+    oprot.WriteString(Self.Success);
+    oprot.WriteFieldEnd();
+  end;
   oprot.WriteFieldStop();
   oprot.WriteStructEnd();
 end;
@@ -1332,11 +1396,20 @@ end;
 function TTodoService.TPost_resultImpl.ToString: string;
 var
   _sb33 : TThriftStringBuilder;
+  _first34 : Boolean;
 begin
   _sb33 := TThriftStringBuilder.Create('(');
   try
+    _first34 := TRUE;
+    if (__isset_Success) then begin
+      if not _first34 then _sb33.Append(',');
+      _first34 := FALSE;
+      _sb33.Append('Success: ');
+      _sb33.Append( Self.Success);
+    end;
     _sb33.Append(')');
     Result := _sb33.ToString;
+    if _first34 then {prevent warning};
   finally
     _sb33.Free;
   end;
